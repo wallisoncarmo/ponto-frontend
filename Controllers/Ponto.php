@@ -27,13 +27,22 @@ class Ponto extends AbstractController {
 
         if ($post['submit']) {
 
+
             unset($post['submit']);
 
-            $url = ROOT_CLIENTE . "justificativas";
+            $post["periodo"] = convertDataEN($post["periodo"]);
 
             $post = json_encode($post, JSON_UNESCAPED_UNICODE);
 
-            $res = $this->servicePost($url, $post, $_SESSION['user']['token']);
+
+            if ($this->request['id']) {
+                $url = ROOT_CLIENTE . "justificativas/" . $this->request['id'];
+                $res = $this->servicePut($url, $post, $_SESSION['user']['token']);
+            } else {
+                $url = ROOT_CLIENTE . "justificativas/";
+                $res = $this->servicePost($url, $post, $_SESSION['user']['token']);
+            }
+
             if ($res["code"] != 200) {
                 $text = 'error';
             } else {
@@ -41,11 +50,39 @@ class Ponto extends AbstractController {
             }
 
             \Config\Message\Message::setMessage($res["body"]["message"], $text);
+            header("Location: " . ROOT_URL . "ponto/justificativa-lista");
         }
         $url = ROOT_CLIENTE . "tipo_justificativas";
 
         $res = $this->serviceGet($url, $_SESSION['user']['token']);
 
+        if ($this->request['id']) {
+            $url = ROOT_CLIENTE . "justificativas/" . $this->request['id'];
+            $justificativa = $this->serviceGet($url, $_SESSION['user']['token']);
+            $res['justificativa'] = $justificativa['body'];
+        }
+
+
+        if ($res["code"] == FORBIDDEN_CODE) {
+            $this->logout();
+        }
+
+        if ($res["code"] == NOT_FOUND_CODE) {
+            $res['tipo_justificativas'] = array();
+        } else {
+            $res['tipo_justificativas'] = $res["body"];
+            unset($res["body"]);
+        }
+
+        $this->returnView($res, true);
+    }
+
+    protected function justificativaLista() {
+        $res = array();
+
+        $url = ROOT_CLIENTE . "justificativas";
+
+        $res = $this->serviceGet($url, $_SESSION['user']['token']);
 
         if ($res["code"] == FORBIDDEN_CODE) {
             $this->logout();

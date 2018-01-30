@@ -49,11 +49,11 @@ class Home extends AbstractController {
         $res = $this->serviceGet($url, $_SESSION['user']['token']);
 
         $res = $res["body"];
+
         if (!$res)
             $res = array();
 
-
-        $this->returnView($res, true);
+        $this->returnView($res['data'], true);
     }
 
 }

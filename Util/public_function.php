@@ -152,3 +152,14 @@ function boolHoraMaior($atual, $ultima, $total, $carga) {
     }
     return WARNING_MARCACAO_MSG . ". Hoje foram feitas " . date('H:i', $result) . " horas e sua carga é de " . $carga . " horas semanais.";
 }
+
+function convertDataEN($data) {
+
+    if (strstr($data, '/')) {
+        $ano = substr($data, 6);
+        $mes = substr($data, 3, -5);
+        $dia = substr($data, 0, -8);
+        return $ano . "-" . $mes . "-" . $dia;
+    }
+    return $data;
+}

@@ -63,7 +63,10 @@
             </thead>
 
             <tbody>
-                <?php foreach ($viewmodel as $key => $value):
+                <?php 
+                if(isset($viewmodel)){
+                
+                foreach ($viewmodel as $key => $value):
                     ?>
                     <tr>
                         <td id="total"><?= $key ?></td> 
@@ -72,7 +75,7 @@
                             <td><?= $current ?></td> 
                         <?php endforeach; ?>
                         <td id="total"><?= $value['horas_trabalhadas'] ?></td> 
-                    <?php endforeach; ?>
+                    <?php endforeach;} ?>
                 </tr>
             </tbody>
         </table>
@@ -82,9 +85,9 @@
 
 
 
+<script src="<?= ROOT_URL ?>assets/lib/jquery/jquery.min.js"></script>
+<script src="<?= ROOT_URL ?>assets/lib/raphael/raphael.min.js"></script>
 <link rel="stylesheet" href="<?= ROOT_URL ?>assets/lib/morris.js-0.5.1/morris.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="<?= ROOT_URL ?>assets/lib/morris.js-0.5.1/morris.js"></script>
 <script>
 
@@ -172,7 +175,7 @@
                 '#95D7BB',
             ],
             formatter: function (x) {
-                return x + "x"
+                return x + "%"
             }
         });
     }

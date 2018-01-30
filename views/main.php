@@ -22,7 +22,7 @@
         <meta name="twitter:image" content="">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
+        <!--<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">-->
 
         <!-- Bootstrap CSS File -->
         <link href="<?= ROOT_URL ?>assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -64,13 +64,13 @@
                     <ul class="nav-menu">
                         <li><a href="<?= ROOT_URL ?>">Principal</a></li>
                         <li><a href="<?= ROOT_URL ?>ponto/espelho">Espelho de ponto</a></li>
-                        <li><a href="<?= ROOT_URL ?>ponto/justificativa">Cadastro de Justificativa</a></li>
+                        <li><a href="<?= ROOT_URL ?>ponto/justificativa-lista">Justificativas</a></li>
                     </ul>
                 </nav>
                 <nav class="pull-right" id="nav-menu-container">
                     <ul class="nav-menu">
                         <li class="menu-has-children">
-                            <a href="#">Bem Vindo,Wallison do Carmo Costa!</a>
+                            <a href="#">Bem Vindo,<?=$_SESSION['user']['nome']?></a>
                             <ul>
                                 <li><a href="<?= ROOT_URL ?>user/logout">Sair</a></li>
                             </ul>
@@ -177,7 +177,10 @@
 
             //Timepicker
             $('#datepicker').datepicker({
-                autoclose: true
+                autoclose: true,
+                format: 'dd/mm/yyyy',
+                maxDate: 'now',
+                locale: "pt-br"
             })
 
             function startTime(campo = null) {

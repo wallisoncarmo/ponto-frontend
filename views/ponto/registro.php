@@ -22,7 +22,7 @@
                                 <th>Inicio da Pausa</th>
                                 <th>Fim da Pausa</th>
                                 <th>Saída</th>
-                                <th>Total</th>
+                                <!--<th>Total</th>-->
                             </tr>
                         </thead>
 
@@ -31,7 +31,7 @@
                                 <?php foreach ($viewmodel['marcacao'] as $key => $value): ?>
                                     <td><?= $value ?></td> 
                                 <?php endforeach; ?>
-                                <td id="total"><?= $viewmodel['horas_trabalhadas'] ?></td> 
+                                <!--<td id="total"><?= $viewmodel['horas_trabalhadas'] ?></td>--> 
                             </tr>
                         </tbody>
                     </table>

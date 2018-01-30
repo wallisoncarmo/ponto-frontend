@@ -36,12 +36,19 @@ class User extends AbstractController {
             $res = $this->servicePost($url, $post);
             if ($res["code"] == OK_CODE) {
 
+                $url = ROOT_CLIENTE . "usuarios/usuario-token";
+
+                $token = $res["header"]["authorization"][0];
+
+                $res = $this->serviceGet($url, $token);
+
                 $_SESSION['is_logged_in'] = true;
                 $_SESSION['user'] = [
-                    'token' => $res["header"]["authorization"][0],
-                    'nome' => 'Wallison',
-                    'email' => 1,
-                    'acesso' => 1,
+                    'token' => $token,
+                    'nome' => $res["body"]["nome"],
+                    'email' => $res["body"]["email"],
+                    'acesso_id' => $res["body"]["acessos_id"],
+                    'acesso' => $res["body"]["acessos"],
                 ];
                 header('Location: ' . ROOT_URL);
             }

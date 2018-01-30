@@ -22,7 +22,7 @@
         <meta name="twitter:image" content="">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
+        <!--<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">-->
 
         <!-- Bootstrap CSS File -->
         <link href="../assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -72,7 +72,7 @@
                                                 <div class="input-group-addon" style="width: 2.6rem">
                                                     <i class="fa fa-user"style="color:gray"></i>
                                                 </div>
-                                                <input type="text" name="email" class="form-control" id="email" placeholder="Informe seu e-mail" required autofocus>
+                                                <input type="email" name="email" class="form-control" id="email" placeholder="Informe seu e-mail" required autofocus>
                                             </div>
                                         </div>
                                     </div>
@@ -121,23 +121,6 @@
 
     </section>
 
-    <!-- Required JavaScript Libraries -->
-    <script src="../assets/lib/jquery/jquery.min.js"></script>
-    <script src="../assets/lib/jquery/jquery-migrate.min.js"></script>
-    <script src="../assets/lib/superfish/hoverIntent.js"></script>
-    <script src="../assets/lib/superfish/superfish.min.js"></script>
-    <script src="../assets/lib/tether/js/tether.min.js"></script>
-    <script src="../assets/lib/stellar/stellar.min.js"></script>
-    <script src="../assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/lib/counterup/counterup.min.js"></script>
-    <script src="../assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="../assets/lib/easing/easing.js"></script>
-    <script src="../assets/lib/stickyjs/sticky.js"></script>
-    <script src="../assets/lib/parallax/parallax.js"></script>
-    <script src="../assets/lib/lockfixed/lockfixed.min.js"></script>
-
-    <!-- Template Specisifc Custom Javascript File -->
-    <script src="../assets/js/custom.js"></script>
 
 
 </body>
